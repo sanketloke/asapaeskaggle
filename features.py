@@ -51,7 +51,7 @@ def generateFeatures(X):
     """ Number of word tokens divided by number of sentences """
     word_token_by_count_sentences = [  float(count_word)/count_sentences for  count_word,count_sentences in zip(essay_word_count,sentence_count_per_essay)  ]
     
-    """  Number of non-initial CAPS words divided by number of sentences """
+    """ Number of non-initial CAPS words divided by number of sentences """
     
     """ Number of characters in the essay divided by number of sentences"""
     character_count_by_count_sentences = [  float(len(x))/count_sentences for  x,count_sentences in zip(X,sentence_count_per_essay)  ]
