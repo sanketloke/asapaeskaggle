@@ -9,6 +9,8 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn import svm
 from nltk.corpus import wordnet as wn
 import pickle
+from scipy.sparse import hstack
+from scipy import sparse
 
 def loadTrain(filename):
     traindf = DataFrame.from_csv(filename, sep='\t',index_col=False)
@@ -70,8 +72,6 @@ def generateFeatures(X):
     X = vectorizer.fit_transform(X)
     X = transformer.fit_transform(X)
     #Combining features into a single feature matrix 
-    from scipy.sparse import hstack
-    from scipy import sparse
     X=hstack((X,essay_POS_features))
     X=hstack((X, sparse.csr_matrix(np.array(fourth_root_essay_word_count)).transpose() ))
     X=hstack((X, sparse.csr_matrix(np.array(character_count_by_count_sentences)).transpose() ))
